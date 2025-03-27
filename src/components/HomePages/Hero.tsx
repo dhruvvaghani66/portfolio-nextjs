@@ -118,7 +118,10 @@ export default function Hero() {
         <motion.div variants={itemVariants} className="flex gap-4 mt-8">
           {[
             { icon: <FaGithub size={26} />, link: "#" },
-            { icon: <FaLinkedinIn size={26} />, link: "#" },
+            {
+              icon: <FaLinkedinIn size={26} />,
+              link: "https://www.linkedin.com/in/dhruv-vaghani-745222219/",
+            },
             { icon: <FaXTwitter size={26} />, link: "#" },
           ].map((item, index) => (
             <motion.a

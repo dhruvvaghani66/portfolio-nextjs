@@ -86,7 +86,7 @@ export function Navbar() {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 flex justify-center items-center pb-6 md:pb-[60px] z-[101] px-4 sm:px-0">
+    <div className="fixed bottom-0 left-0 right-0 flex justify-center items-center pb-6 md:pb-[50px] z-[101] px-4 sm:px-0">
       {/* {isMobile ? ( */}
       <div className="relative flex justify-end hidden w-full px-6 menu-container">
         {/* Hamburger Icon */}
