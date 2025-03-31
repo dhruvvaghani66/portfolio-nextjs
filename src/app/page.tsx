@@ -6,7 +6,6 @@
 // import Testimonial from "@/components/HomePages/Testimonial";
 // import { Navbar } from "@/components/common/Navbar";
 
-
 // // import { MarqueeDemo } from "@/components/HomePages/Testimonial";
 // // import { BentoGridSecondDemo } from "@/components/HomePages/gridfeatures";
 
@@ -26,64 +25,80 @@
 //       <ExperienceSection />
 //       <Testimonial />
 //       <LetsWorkTogether />
-      
 
 //     </div>
 //   );
 // }
 
-
-
-
-
-
-import ExperienceSection from "@/components/HomePages/Experience";
+"use client";
+// import ExperienceSection from "@/components/HomePages/Experience";
 import { BentoDemo } from "@/components/HomePages/Features";
 import Hero from "@/components/HomePages/Hero";
 import LetsWorkTogether from "@/components/HomePages/LetsWorkTogether";
-import Projects from "@/components/HomePages/Projects";
-import Testimonial from "@/components/HomePages/Testimonial";
+// import Projects from "@/components/HomePages/Projects";
+// import Testimonial from "@/components/HomePages/Testimonial";
 import Footer from "@/components/common/Footer";
 import { Navbar } from "@/components/common/Navbar";
+import dynamic from "next/dynamic"; // ✅ Import dynamic for lazy loading
+
+// ✅ Lazy load non-critical components
+const LazyExperienceSection = dynamic(
+  () => import("@/components/HomePages/Experience"),
+  {
+    loading: () => <p>Loading Experience...</p>,
+  }
+);
+
+const LazyProjects = dynamic(() => import("@/components/HomePages/Projects"), {
+  loading: () => <p>Loading Projects...</p>,
+});
+
+const LazyTestimonial = dynamic(
+  () => import("@/components/HomePages/Testimonial"),
+  {
+    loading: () => <p>Loading Testimonials...</p>,
+  }
+);
 
 export default function Home() {
   return (
     <div className="container px-6 mx-auto md:px-10 lg:px-12 xl:px-32">
       <Navbar />
-      
-      {/* Add ID here for scrolling */}
+
+      {/* Hero Section */}
       <div id="hero">
         <Hero />
       </div>
 
+      {/* Features Section */}
       <div className="text-white mb-14 lg:mb-20 bgwhite" id="features">
         <BentoDemo />
       </div>
 
+      {/* Lazy-loaded Projects Section */}
       <div id="projects">
-        <Projects />
+        <LazyProjects />
       </div>
 
+      {/* Lazy-loaded Experience Section */}
       <div id="experience">
-        <ExperienceSection />
+        <LazyExperienceSection />
       </div>
 
+      {/* Lazy-loaded Testimonial Section */}
       <div id="testimonial">
-        <Testimonial />
+        <LazyTestimonial />
       </div>
 
+      {/* Contact Section */}
       <div id="contact">
         <LetsWorkTogether />
       </div>
+
       <Footer />
     </div>
-    
   );
 }
-
-
-
-
 
 // "use client";
 // import { useState, useEffect } from "react";
@@ -179,4 +194,3 @@ export default function Home() {
 //     </div>
 //   );
 // }
-
